@@ -23,3 +23,13 @@ Route::controllers([
 get ('users', function(){
   return App\User::all();
 });
+
+Route::resource('courses', 'CoursesController');
+Route::resource('students', 'StudentsController');
+
+Route::bind('courses', function($value, $route) {
+	return App\Task::whereSlug($value)->first();
+});
+Route::bind('students', function($value, $route) {
+	return App\Project::whereSlug($value)->first();
+});
