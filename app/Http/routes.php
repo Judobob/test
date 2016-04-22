@@ -32,8 +32,8 @@ Route::resource('courses', 'CoursesController');
 Route::resource('students', 'StudentsController');
 
 Route::bind('courses', function($value, $route) {
-	return App\Task::whereSlug($value)->first();
+	return App\Course::whereId($value)->first();
 });
 Route::bind('students', function($value, $route) {
-	return App\Project::whereSlug($value)->first();
+	return App\Student::whereId($value)->first();
 });

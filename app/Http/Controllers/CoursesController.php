@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
-
+use Input;
+use Redirect;
 use App\Course;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -36,7 +37,11 @@ class CoursesController extends Controller {
 	 */
 	public function store()
 	{
-		//
+	$input = Input::all();
+	Course::create( $input );
+ 
+	return Redirect::route('courses.index')->with('message', 'Project created');
+
 	}
 
 	/**
@@ -69,7 +74,10 @@ class CoursesController extends Controller {
 	 */
 	public function update(Course $course)
 	{
-		//
+	$input = array_except(Input::all(), '_method');
+	$course->update($input);
+ 
+	return Redirect::route('courses.show', $course->slug)->with('message', 'Project updated.');
 	}
 
 	/**
@@ -80,7 +88,8 @@ class CoursesController extends Controller {
 	 */
 	public function destroy(Course $course)
 	{
-		//
-	}
+	$course->delete();
+ 
+	return Redirect::route('courses.index')->with('message', 'Course deleted.');	}
 
 }
