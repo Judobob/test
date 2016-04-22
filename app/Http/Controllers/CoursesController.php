@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Course;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class CoursesController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$courses= Course::all();
+		return view('courses.index',compact('courses'));
 	}
 
 	/**
@@ -24,7 +26,7 @@ class CoursesController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('courses.create');
 	}
 
 	/**
@@ -43,9 +45,9 @@ class CoursesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(Course $course)
 	{
-		//
+		return view('courses.show', compact('course'));
 	}
 
 	/**
@@ -54,9 +56,9 @@ class CoursesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Course $course)
 	{
-		//
+		return view('courses.edit', compact('course'));
 	}
 
 	/**
@@ -65,7 +67,7 @@ class CoursesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Course $course)
 	{
 		//
 	}
@@ -76,7 +78,7 @@ class CoursesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Course $course)
 	{
 		//
 	}

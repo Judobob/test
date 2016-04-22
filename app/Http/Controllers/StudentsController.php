@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Student;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,9 @@ class StudentsController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$students= Student::all();
+		return view('students.index',compact('students'));
+
 	}
 
 	/**
@@ -24,7 +27,7 @@ class StudentsController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('students.create');
 	}
 
 	/**
@@ -43,9 +46,10 @@ class StudentsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(Student $student)
 	{
-		//
+		return view('students.show', compact('student'));
+
 	}
 
 	/**
@@ -54,9 +58,9 @@ class StudentsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Student $student)
 	{
-		//
+		return view('students.edit', compact('student'));
 	}
 
 	/**
@@ -65,7 +69,7 @@ class StudentsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Student $student)
 	{
 		//
 	}
@@ -76,7 +80,7 @@ class StudentsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Student $student)
 	{
 		//
 	}

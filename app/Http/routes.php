@@ -24,6 +24,10 @@ get ('users', function(){
   return App\User::all();
 });
 
+// Provide controller methods with object instead of ID
+Route::model('courses', 'Course');
+Route::model('students', 'Student');
+
 Route::resource('courses', 'CoursesController');
 Route::resource('students', 'StudentsController');
 
