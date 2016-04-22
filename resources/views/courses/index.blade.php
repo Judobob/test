@@ -9,8 +9,8 @@
         <ul>
             @foreach( $courses as $course )
                 <li>
-                    {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('courses.destroy', $course->slug))) !!}
-                        <a href="{{ route('courses.show', $course->slug) }}">{{ $course->title }}</a>
+                    {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('courses.destroy', $course->id))) !!}
+                        <a href="{{ route('courses.show', $course->id) }}">{{ $course->title }}</a>
                         (
                             {!! link_to_route('courses.edit', 'Edit', array($course->id), array('class' => 'btn btn-info')) !!},
                             {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}

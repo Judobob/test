@@ -8,7 +8,7 @@
     @else
         <ul>
             @foreach( $course->students as $student )
-                <li><a href="{{ route('courses.students.show', [$course->slug, $student->slug]) }}">{{ $student->first_name }}</a></li>
+                <li><a href="{{ route('courses.students.show', [$course->id, $student->id]) }}">{{ $student->first_name }}</a></li>
             @endforeach
         </ul>
     @endif
