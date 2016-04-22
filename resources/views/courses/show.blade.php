@@ -4,7 +4,7 @@
     <h2>{{ $course->title }}</h2>
  
     @if ( !$course->students->count() )
-        Your course has no tasks.
+        Your course has no students.
     @else
         <ul>
             @foreach( $course->students as $student )

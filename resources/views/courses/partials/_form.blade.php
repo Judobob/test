@@ -1,10 +1,10 @@
 <div class="form-group">
     {!! Form::label('begin', 'Begin:') !!}
-    {!! Form::text('begin') !!}
+    {!! Form::date('begin') !!}
 </div>
 <div class="form-group">
     {!! Form::label('end', 'End:') !!}
-    {!! Form::text('end') !!}
+    {!! Form::date('end') !!}
 </div>
 <div class="form-group">
     {!! Form::label('title', 'Title:') !!}
