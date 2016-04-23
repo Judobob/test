@@ -41,7 +41,12 @@
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/') }}">Home</a></li>
 				</ul>
-
+				<ul class="nav navbar-nav">
+					<li><a href="{{ url('/courses') }}">Courses</a></li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li><a href="{{ url('/students') }}">Students</a></li>
+				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 						<li><a href="{{ url('/auth/login') }}">Login</a></li>

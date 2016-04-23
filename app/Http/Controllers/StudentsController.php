@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
-
+use Input;
+use Redirect;
 use App\Student;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -48,7 +49,9 @@ class StudentsController extends Controller {
 	 */
 	public function show(Student $student)
 	{
-		return view('students.show', compact('student'));
+		$course_list= \DB::table('courses')->lists('title', 'id');
+
+		return view('students.show', compact('student','course_list'));
 
 	}
 

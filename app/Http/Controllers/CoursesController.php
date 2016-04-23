@@ -52,7 +52,8 @@ class CoursesController extends Controller {
 	 */
 	public function show(Course $course)
 	{
-		return view('courses.show', compact('course'));
+		$student_list= \DB::table('students')->lists('first_name', 'id');
+		return view('courses.show', compact('course','student_list'));
 	}
 
 	/**

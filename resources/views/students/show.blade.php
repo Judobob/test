@@ -12,3 +12,7 @@
             @endforeach
         </ul>
     @endif
+<div class="form-group">
+    {!! Form::label('Student list') !!}<br />
+    {!! Form::select('student_id', ($student_list), null, ['class' => 'form-control']) !!}
+    </div>
