@@ -5,7 +5,7 @@ use App\Course;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 
 class CoursesController extends Controller {
 
@@ -17,6 +17,7 @@ class CoursesController extends Controller {
 	public function index()
 	{
 		$courses= Course::all();
+		if(Request::isJson()) return $courses;
 		return view('courses.index',compact('courses'));
 	}
 
@@ -38,9 +39,9 @@ class CoursesController extends Controller {
 	public function store()
 	{
 	$input = Input::all();
-	Course::create( $input );
- 
-	return Redirect::route('courses.index')->with('message', 'Project created');
+	$course = Course::create( $input );
+ 	if(Request::isJson()) return $course;
+	return Redirect::route('courses.index')->with('message', 'Course created');
 
 	}
 
