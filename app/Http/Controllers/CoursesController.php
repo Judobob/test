@@ -116,9 +116,46 @@ class CoursesController extends Controller {
 	 * @return Response
 	 */
 	public function register(Course $course){
+		$students=$course->students->count();
+		$candidate_limit=$course->candidate_limit;
+		if($students > $candidate_limit){
+		return jsend()->success('false')
+                      ->data(['message' => 'Candidate Limit reached','candidate_limit' =>$candidate_limit])
+                      ->get();
+				
+		}		
 		$student_id = Input::get('student_id');
 		$course->students()->attach($student_id);
-		return $student_id;
+		return jsend()->success()
+                      ->data([])
+                      ->get();
+				
+		}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function unregister(Course $course){
+		$student_id = Input::get('student_id');
+		
+		if ($course->students()->exists($student_id)==false){
+		return jsend()->error()
+		      ->code(404)
+                      ->data([])
+                      ->get();
+
+		}
+	
+		$course->students()->detach($student_id);
+		return jsend()->error()
+		      ->code(200)
+                      ->data(['message' => 'Candidate Limit reached','candidate_limit' =>$candidate_limit])
+                      ->get();
+
 	}
+
 
 }

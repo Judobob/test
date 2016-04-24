@@ -29,6 +29,7 @@ Route::model('courses', 'Course');
 Route::model('students', 'Student');
 
 Route::post('courses/{courses}/register','CoursesController@register' );
+Route::delete('courses/{courses}/register','CoursesController@unregister' );
 
 Route::resource('courses', 'CoursesController');
 Route::resource('students', 'StudentsController');
