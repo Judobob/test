@@ -2,6 +2,7 @@
 use Input;
 use Redirect;
 use App\Student;
+use Validator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -36,9 +37,32 @@ class StudentsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+	 $validator = Validator::make($request->all(), [
+            'gender' => 'required',
+	    'first_name' => 'required',
+	    'last_name' => 'required'
+        ]);
+	if ($validator->fails()) {
+                return jsend()->success()
+                      ->code(400)
+                      ->message("Error")
+                      ->data(['message' => 'Fields gender first name last name required'])
+                      ->get();
+		
+        }
+	$input = Input::all();
+	$course = Student::create( $input );
+ 	
+		return jsend()->success()
+                      ->code(200)
+                      ->message("success")
+                      ->data(['message' => 'success'])
+                      ->get();
+		 
+
+	
 	}
 
 	/**
@@ -74,7 +98,14 @@ class StudentsController extends Controller {
 	 */
 	public function update(Student $student)
 	{
-		//
+	$input = array_except(Input::all(), '_method');
+	$student->update($input);
+	return jsend()->success()
+                      ->code(200)
+                      ->message("success")
+                      ->data([])
+                      ->get();
+
 	}
 
 	/**

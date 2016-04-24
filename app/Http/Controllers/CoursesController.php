@@ -1,11 +1,12 @@
 <?php namespace App\Http\Controllers;
 use Input;
 use Redirect;
+use Validator;
 use App\Course;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class CoursesController extends Controller {
 
@@ -26,16 +27,15 @@ class CoursesController extends Controller {
 		}
 
 
-		if(Request::isJson()){
+		
 		 return jsend()->success()
                       ->code(200)
                       ->message("Success")
                       ->data((array)$returnArray)
                       ->get();
-		} 
+		 
 
-		return view('courses.index',compact('courses'));
-	}
+			}
 
 	/**
 	 * Show the form for creating a new resource.
@@ -49,20 +49,33 @@ class CoursesController extends Controller {
 
 	/**
 	 * Store a newly created resource in storage.
-	 *
+	 * @param Request
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
+	 $validator = Validator::make($request->all(), [
+            'begin' => 'required',
+	    'end' => 'required',
+	    'candidate_limit' => 'required'
+        ]);
+	if ($validator->fails()) {
+                return jsend()->success()
+                      ->code(400)
+                      ->message("Error")
+                      ->data(['message' => 'Fields begin, end and title are required'])
+                      ->get();
+		
+        }
 	$input = Input::all();
 	$course = Course::create( $input );
- 	if(Request::isJson()){
+ 	
 		return jsend()->success()
                       ->code(200)
-                      ->message("Success")
-                      ->data(['allGood' => true])
+                      ->message("success")
+                      ->data(['message' => 'success'])
                       ->get();
-		} 
+		 
 
 	return Redirect::route('courses.index')->with('message', 'Course created');
 
