@@ -17,11 +17,20 @@ class CoursesController extends Controller {
 	public function index()
 	{
 		$courses= Course::all();
+		$returnArray=Array();
+		$returnArray['courses']=Array();
+		foreach ($courses as $course) {
+
+		$course->students->all();
+		   $returnArray['courses'][]=$course; 
+		}
+
+
 		if(Request::isJson()){
 		 return jsend()->success()
                       ->code(200)
                       ->message("Success")
-                      ->data(['allGood' => true])
+                      ->data((array)$returnArray)
                       ->get();
 		} 
 
