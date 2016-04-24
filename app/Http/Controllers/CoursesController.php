@@ -17,7 +17,14 @@ class CoursesController extends Controller {
 	public function index()
 	{
 		$courses= Course::all();
-		if(Request::isJson()) return $courses;
+		if(Request::isJson()){
+		 return jsend()->success()
+                      ->code(200)
+                      ->message("Success")
+                      ->data(['allGood' => true])
+                      ->get();
+		} 
+
 		return view('courses.index',compact('courses'));
 	}
 
@@ -40,7 +47,14 @@ class CoursesController extends Controller {
 	{
 	$input = Input::all();
 	$course = Course::create( $input );
- 	if(Request::isJson()) return $course;
+ 	if(Request::isJson()){
+		return jsend()->success()
+                      ->code(200)
+                      ->message("Success")
+                      ->data(['allGood' => true])
+                      ->get();
+		} 
+
 	return Redirect::route('courses.index')->with('message', 'Course created');
 
 	}
@@ -93,5 +107,18 @@ class CoursesController extends Controller {
 	$course->delete();
  
 	return Redirect::route('courses.index')->with('message', 'Course deleted.');	}
+	
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function register(Course $course){
+		$student_id = Input::get('student_id');
+		$course->students()->attach($student_id);
+		return $student_id;
+	}
 
 }

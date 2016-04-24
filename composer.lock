@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fbb4f67c55562784b02d6b864d8a7966",
-    "content-hash": "7bb9424ec378f6daa6518ee1304ae65d",
+    "hash": "1ca01f0053007890cdfd8d7aad663a1d",
+    "content-hash": "b5fa901e50912c1433f84eb8b4118309",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -222,6 +222,88 @@
                 "string"
             ],
             "time": "2015-11-06 14:35:42"
+        },
+        {
+            "name": "evandarwin/jsend",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/EvanDarwin/JSend.git",
+                "reference": "a31f7590e8503590d10012510ffc50a0ef064d02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/EvanDarwin/JSend/zipball/a31f7590e8503590d10012510ffc50a0ef064d02",
+                "reference": "a31f7590e8503590d10012510ffc50a0ef064d02",
+                "shasum": ""
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "EvanDarwin\\JSend\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Basic JSend interface for PHP projects.",
+            "keywords": [
+                "jsend",
+                "json"
+            ],
+            "time": "2016-02-08 06:06:48"
+        },
+        {
+            "name": "evandarwin/laravel-jsend",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/EvanDarwin/Laravel-JSend.git",
+                "reference": "34573116554b6bf003a28d108831663b32976736"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/EvanDarwin/Laravel-JSend/zipball/34573116554b6bf003a28d108831663b32976736",
+                "reference": "34573116554b6bf003a28d108831663b32976736",
+                "shasum": ""
+            },
+            "require": {
+                "evandarwin/jsend": "1.2.*",
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "orchestra/testbench": "~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EvanDarwin\\JSend\\Laravel\\": "src/EvanDarwin/JSend/Laravel"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Darwin",
+                    "email": "evan@devil.io"
+                }
+            ],
+            "description": "Laravel JSend Response Helper",
+            "keywords": [
+                "helper",
+                "jsend",
+                "json",
+                "laravel"
+            ],
+            "time": "2015-07-28 22:15:11"
         },
         {
             "name": "ircmaxell/password-compat",
